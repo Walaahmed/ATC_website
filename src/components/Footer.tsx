@@ -11,7 +11,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Facebook, href: "https://facebook.com/atcae", label: "Facebook" },
     { icon: Twitter, href: "https://twitter.com/atcae", label: "Twitter" },
-    { icon: Linkedin, href: "https://linkedin.com/company/atcae", label: "LinkedIn" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/afakaltamayuz/", label: "LinkedIn" },
     { icon: Instagram, href: "https://instagram.com/atcae", label: "Instagram" },
   ];
 
