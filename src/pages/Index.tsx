@@ -1,26 +1,21 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import HeroSection from "@/components/HeroSection";
-import ServicesSection from "@/components/ServicesSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import BlogSection from "@/components/BlogSection";
-import NewsletterSection from "@/components/NewsletterSection";
-import PartnersSection from "@/components/PartnersSection";
+import Layout from '@/components/layout/Layout';
+import HeroSection from '@/components/home/HeroSection';
+import AboutSection from '@/components/home/AboutSection';
+import ServicesSection from '@/components/home/ServicesSection';
+import SectorsSection from '@/components/home/SectorsSection';
+import FAQSection from '@/components/home/FAQSection';
+import CTASection from '@/components/home/CTASection';
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
-      <Navbar />
-      <main>
-        <HeroSection />
-        <PartnersSection />
-        <ServicesSection />
-        <TestimonialsSection />
-        <BlogSection />
-        <NewsletterSection />
-      </main>
-      <Footer />
-    </div>
+    <Layout>
+      <HeroSection />
+      <AboutSection />
+      <ServicesSection />
+      <SectorsSection />
+      <FAQSection />
+      <CTASection />
+    </Layout>
   );
 };
 

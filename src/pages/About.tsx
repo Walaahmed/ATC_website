@@ -1,119 +1,334 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { Users, Award, TrendingUp, Sparkles, CheckCircle } from "lucide-react";
+import { motion, useInView } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import Layout from '@/components/layout/Layout';
+import Partners3DSlider from '@/components/partners/Partners3DSlider';
+import { Users, BookOpen, Award, Star } from 'lucide-react';
+import heroMeeting from '@/assets/hero-meeting.jpg';
+
+// Counter animation component
+const AnimatedCounter = ({ end, suffix = '' }: { end: number; suffix?: string }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (isInView) {
+      let start = 0;
+      const duration = 2000;
+      const increment = end / (duration / 16);
+      
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= end) {
+          setCount(end);
+          clearInterval(timer);
+        } else {
+          setCount(Math.floor(start));
+        }
+      }, 16);
+
+      return () => clearInterval(timer);
+    }
+  }, [isInView, end]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+};
 
 const About = () => {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+
   const stats = [
-    { icon: Users, value: "300+", label: "مدرب معتمد" },
-    { icon: Award, value: "3,200+", label: "متدرب ومتدربة" },
-    { icon: TrendingUp, value: "420+", label: "دورة تدريبية منجزة" },
-    { icon: Sparkles, value: "96%", label: "تقييم إيجابي" },
+    { icon: Users, value: 5000, suffix: '+', label: t('aboutPage.stat1Label') },
+    { icon: BookOpen, value: 500, suffix: '+', label: t('aboutPage.stat2Label') },
+    { icon: Award, value: 100, suffix: '+', label: t('aboutPage.stat3Label') },
+    { icon: Star, value: 98, suffix: '%', label: t('aboutPage.stat4Label') },
   ];
 
-  const values = [
-    "التميز في تقديم الخدمات",
-    "الابتكار والتطوير المستمر",
-    "الشراكة الحقيقية مع العملاء",
-    "الالتزام بأعلى معايير الجودة",
-    "المرونة في التعامل",
-    "الاحترافية في التنفيذ",
+  const pills = [
+    t('aboutPage.pill1'),
+    t('aboutPage.pill2'),
+    t('aboutPage.pill3'),
+    t('aboutPage.pill4'),
   ];
 
   return (
-    <div className="min-h-screen">
-      <Navbar />
-      
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-navy" />
-        <div className="absolute inset-0 bg-glow-gold opacity-20" />
-        
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 animate-fade-in">
-              من نحن
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              خبرة تتجاوز <span className="text-gradient-gold">25 عامًا</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              نحن متخصصون في تقديم خدمات التدريب والاستشارات، نقدم حلولًا شاملة تساهم في تحسين الأداء وتعزيز الكفاءة المؤسسية.
-            </p>
+    <Layout>
+      {/* Hero Section - Same as Home Page */}
+      <section className="relative bg-gradient-to-br from-white via-secondary to-blue-50 overflow-hidden pt-28 lg:pt-32">
+        {/* Background Decorations */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            animate={{ 
+              y: [-30, 30, -30],
+              x: [-20, 20, -20],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full bg-primary/5 blur-[100px]"
+          />
+          <motion.div
+            animate={{ 
+              y: [30, -30, 30],
+              x: [20, -20, 20],
+              scale: [1.1, 1, 1.1],
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-accent/10 blur-[120px]"
+          />
+        </div>
+
+        <div className="container-custom relative z-10 py-16 lg:py-24">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Content Side */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className={`${isRTL ? 'order-2 lg:order-1' : 'order-2 lg:order-2'}`}
+            >
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent/15 text-accent border border-accent/25 font-medium backdrop-blur-sm mb-8">
+                  <Award className="w-4 h-4 animate-pulse" />
+                  <span className="text-sm">{t('aboutPage.badge')}</span>
+                </span>
+              </motion.div>
+
+              {/* Main Heading */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight mb-6"
+              >
+                {t('aboutPage.title1')}{' '}
+                <span className="relative inline-block">
+                  <span className="text-accent">{t('aboutPage.titleHighlight')}</span>
+                  <motion.span
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
+                    className={`absolute -bottom-2 ${isRTL ? 'right-0 origin-right' : 'left-0 origin-left'} w-full h-1.5 bg-gradient-gold rounded-full`}
+                  />
+                </span>
+                {' '}{t('aboutPage.title2')}
+              </motion.h1>
+
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="text-xl md:text-2xl text-primary font-medium mb-4"
+              >
+                {t('aboutPage.companyName')}
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8"
+              >
+                {t('aboutPage.description')}
+              </motion.p>
+
+              {/* Features Pills */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.6 }}
+                className="flex flex-wrap gap-3"
+              >
+                {pills.map((item, index) => (
+                  <motion.span
+                    key={item}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.7 + index * 0.1 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="px-5 py-2.5 bg-primary/10 backdrop-blur-sm rounded-full text-primary text-sm font-medium border border-primary/20 cursor-default"
+                  >
+                    {item}
+                  </motion.span>
+                ))}
+              </motion.div>
+            </motion.div>
+
+            {/* Image Side */}
+            <motion.div
+              initial={{ opacity: 0, x: isRTL ? 50 : -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className={`${isRTL ? 'order-1 lg:order-2' : 'order-1 lg:order-1'}`}
+            >
+              <div className="relative">
+                {/* Main Image */}
+                <div className="relative rounded-2xl overflow-hidden shadow-strong">
+                  <img
+                    src={heroMeeting}
+                    alt="ATC Consulting Team"
+                    className="w-full h-[300px] md:h-[400px] lg:h-[480px] object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
+                </div>
+                
+                {/* Decorative Elements */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                  className={`absolute -top-6 ${isRTL ? '-right-6' : '-left-6'} w-24 h-24 border-2 border-accent/30 rounded-full hidden lg:block`}
+                />
+                <motion.div
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+                  className={`absolute -bottom-4 ${isRTL ? '-left-4' : '-right-4'} w-16 h-16 border-2 border-primary/20 rounded-full hidden lg:block`}
+                />
+                
+                {/* Stats Badge */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8, duration: 0.5 }}
+                  className={`absolute -bottom-6 ${isRTL ? '-right-6' : '-left-6'} bg-white rounded-xl shadow-strong p-4 hidden md:block border border-border`}
+                >
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-primary">25+</div>
+                    <div className="text-sm text-muted-foreground">{t('hero.yearsExperience')}</div>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 relative">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-20 bg-background -mt-10 relative z-10">
+        <div className="container-custom">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
-              <div
+              <motion.div
                 key={stat.label}
-                className="p-8 rounded-2xl bg-gradient-card border border-border/50 text-center hover-lift"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-card rounded-2xl p-8 text-center shadow-soft hover:shadow-medium transition-all duration-300"
               >
-                <stat.icon className="w-10 h-10 text-primary mx-auto mb-4" />
-                <div className="text-4xl font-bold text-gradient-gold mb-2">{stat.value}</div>
-                <div className="text-muted-foreground">{stat.label}</div>
-              </div>
+                <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                  <stat.icon className="w-8 h-8 text-accent" />
+                </div>
+                <div className="text-4xl font-bold text-primary mb-2">
+                  <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                </div>
+                <p className="text-muted-foreground">{stat.label}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Mission Section */}
-      <section className="py-24 relative">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                رسالتنا
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                تمكين المؤسسات من <span className="text-gradient-gold">تحقيق التميز</span>
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                نسعى لتقديم خدمات استشارية وتدريبية عالية الجودة تساهم في تطوير المؤسسات والأفراد، 
-                من خلال توظيف أحدث التقنيات والمنهجيات العالمية، بالإضافة إلى شراكات قوية في مجالات 
-                تقنيات الميتافيرس والابتكارات الرقمية.
+      {/* Vision & Mission */}
+      <section className="section-padding bg-gradient-subtle">
+        <div className="container-custom">
+          <div className="grid md:grid-cols-2 gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: isRTL ? -30 : 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-card rounded-3xl p-8 md:p-10 shadow-soft"
+            >
+              <div className="w-16 h-16 rounded-xl bg-gradient-primary flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-foreground mb-4">{t('aboutPage.visionTitle')}</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {t('aboutPage.visionText')}
               </p>
-              
-              <div className="space-y-3 mb-8">
-                {values.map((value) => (
-                  <div key={value} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-primary shrink-0" />
-                    <span className="text-foreground">{value}</span>
-                  </div>
-                ))}
-              </div>
+            </motion.div>
 
-              <Link to="/contact">
-                <Button variant="gold" size="lg">
-                  تواصل معنا
-                </Button>
-              </Link>
-            </div>
-
-            <div className="relative">
-              <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-card border border-border/50">
-                <img
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=800&fit=crop"
-                  alt="فريق العمل"
-                  className="w-full h-full object-cover"
-                />
+            <motion.div
+              initial={{ opacity: 0, x: isRTL ? 30 : -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-card rounded-3xl p-8 md:p-10 shadow-soft"
+            >
+              <div className="w-16 h-16 rounded-xl bg-gradient-gold flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-accent-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
               </div>
-              {/* Decorative Element */}
-              <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-primary/10 rounded-3xl -z-10" />
-              <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary/5 rounded-3xl -z-10" />
-            </div>
+              <h3 className="text-2xl font-bold text-foreground mb-4">{t('aboutPage.missionTitle')}</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {t('aboutPage.missionText')}
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      <Footer />
-    </div>
+      {/* Partners Section */}
+      <section className="section-padding bg-gradient-subtle relative overflow-hidden">
+        {/* Background decorations */}
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
+          className="absolute top-20 left-10 w-40 h-40 border border-accent/10 rounded-full"
+        />
+        <motion.div
+          animate={{ rotate: -360 }}
+          transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-20 right-10 w-60 h-60 border border-primary/10 rounded-full"
+        />
+        <motion.div
+          animate={{ 
+            y: [-20, 20, -20],
+            opacity: [0.3, 0.6, 0.3]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/3 right-1/4 w-32 h-32 bg-accent/10 rounded-full blur-2xl"
+        />
+        
+        <div className="container-custom relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <motion.span 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="inline-block px-6 py-3 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6 border border-accent/20"
+            >
+              {t('aboutPage.partnersBadge')}
+            </motion.span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              {t('aboutPage.partnersTitle')} <span className="text-gradient-gold">{t('aboutPage.partnersTitleHighlight')}</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+              {t('aboutPage.partnersDescription')}
+            </p>
+          </motion.div>
+
+          <Partners3DSlider />
+        </div>
+      </section>
+    </Layout>
   );
 };
 
