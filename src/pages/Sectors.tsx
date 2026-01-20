@@ -224,63 +224,63 @@ const Sectors = () => {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-white via-blue-50/40 to-white">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary to-blue-600 shadow-strong p-10 md:p-16 text-center"
+  <div className="container-custom">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary to-blue-600 shadow-strong p-10 md:p-16 text-center"
+    >
+      <div className="absolute -top-24 -left-24 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
+      <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl" />
+
+      <div className="relative z-10 max-w-2xl mx-auto text-white">
+        <Shield className="w-16 h-16 mx-auto mb-6 text-white" />
+        
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          {isRTL ? 'شريكك الاستراتيجي في جميع القطاعات' : 'Your Strategic Partner Across All Sectors'}
+        </h2>
+
+        <p className="text-lg text-blue-100 mb-10 leading-relaxed">
+          {isRTL 
+            ? 'مهما كان قطاعك، لدينا الخبرة والحلول المناسبة لدعم نجاحك'
+            : 'Whatever your sector, we have the expertise and solutions to support your success'
+          }
+        </p>
+
+        <div className="flex flex-wrap gap-4 justify-center">
+          <a
+            href="/contact"  // تغيير من Link إلى a tag
+            className="
+              bg-white text-blue-600 font-semibold
+              px-8 py-4 rounded-xl
+              shadow-[0_10px_30px_rgba(255,255,255,0.3)]
+              hover:bg-blue-50 hover:scale-[1.03]
+              transition-all duration-300
+              inline-flex items-center gap-2
+            "
           >
-            <div className="absolute -top-24 -left-24 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-            <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl" />
-
-            <div className="relative z-10 max-w-2xl mx-auto text-white">
-              <Shield className="w-16 h-16 mx-auto mb-6 text-white" />
-              
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                {isRTL ? 'شريكك الاستراتيجي في جميع القطاعات' : 'Your Strategic Partner Across All Sectors'}
-              </h2>
-
-              <p className="text-lg text-blue-100 mb-10 leading-relaxed">
-                {isRTL 
-                  ? 'مهما كان قطاعك، لدينا الخبرة والحلول المناسبة لدعم نجاحك'
-                  : 'Whatever your sector, we have the expertise and solutions to support your success'
-                }
-              </p>
-
-              <div className="flex flex-wrap gap-4 justify-center">
-                <a
-                  href="/contact"
-                  className="
-                    bg-white text-blue-600 font-semibold
-                    px-8 py-4 rounded-xl
-                    shadow-[0_10px_30px_rgba(255,255,255,0.3)]
-                    hover:bg-blue-50 hover:scale-[1.03]
-                    transition-all duration-300
-                    inline-flex items-center gap-2
-                  "
-                >
-                  {isRTL ? 'تواصل معنا' : 'Contact Us'}
-                </a>
-                
-                <a
-                  href="/services"
-                  className="
-                    bg-transparent border-2 border-white text-white font-semibold
-                    px-8 py-4 rounded-xl
-                    hover:bg-white/10 hover:scale-[1.03]
-                    transition-all duration-300
-                    inline-flex items-center gap-2
-                  "
-                >
-                  {isRTL ? 'استكشف خدماتنا' : 'Explore Our Services'}
-                </a>
-              </div>
-            </div>
-          </motion.div>
+            {isRTL ? 'تواصل معنا' : 'Contact Us'}
+          </a>
+          
+          <a
+            href="/services"  // تغيير من Link إلى a tag
+            className="
+              bg-transparent border-2 border-white text-white font-semibold
+              px-8 py-4 rounded-xl
+              hover:bg-white/10 hover:scale-[1.03]
+              transition-all duration-300
+              inline-flex items-center gap-2
+            "
+          >
+            {isRTL ? 'استكشف خدماتنا' : 'Explore Our Services'}
+          </a>
         </div>
-      </section>
+      </div>
+    </motion.div>
+  </div>
+</section>
     </Layout>
   );
 };

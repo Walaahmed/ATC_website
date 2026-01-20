@@ -612,7 +612,7 @@ const Contact = () => {
                     ) : (
                       <span className="flex items-center gap-2">
                         <Send className="w-5 h-5" />
-                        {isRTL ? '👉 إرسال الرسالة' : '👉 Send Message'}
+                        {isRTL ? ' إرسال الرسالة' : ' Send Message'}
                       </span>
                     )}
                   </Button>
