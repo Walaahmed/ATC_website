@@ -1,3 +1,4 @@
+// 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Sparkles } from 'lucide-react';
@@ -7,15 +8,17 @@ import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 const Navbar = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const isRTL = i18n?.dir?.() === 'rtl';
 
   const navLinks = [
     { name: t('nav.home'), path: '/' },
     { name: t('nav.about'), path: '/about' },
     { name: t('nav.services'), path: '/services' },
+    { name: isRTL ? 'القطاعات' : 'Sectors', path: '/sectors' },
     { name: t('nav.contact'), path: '/contact' },
   ];
 
@@ -44,42 +47,40 @@ const Navbar = () => {
     >
       <div className="container-custom">
         <div className="flex items-center justify-between">
-       {/* Logo */}
-<Link to="/" className="flex items-center gap-2 sm:gap-3 group">
-  <motion.div 
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-    className="relative"
-  >
-    {/* Logo Image */}
-  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white flex items-center justify-center shadow-medium group-hover:shadow-strong transition-shadow duration-500">
-  <img
-    src="src/assets/logo.png" 
-    alt="ATC Logo"
-    className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-full"
-  />
-</div>
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative"
+            >
+              {/* Logo Image */}
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white flex items-center justify-center shadow-medium group-hover:shadow-strong transition-shadow duration-500">
+                <img
+                  src="/logo.png" 
+                  alt="ATC Logo"
+                  className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-full"
+                />
+              </div>
 
+              {/* Animated Accent Dot */}
+              <motion.div
+                animate={{ scale: [1, 1.3, 1], opacity: [0.8, 0.4, 0.8] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="absolute -bottom-1 -left-1 w-3 h-3 sm:w-4 sm:h-4 bg-accent rounded-full shadow-gold"
+              />
+            </motion.div>
 
-    {/* Animated Accent Dot */}
-    <motion.div
-      animate={{ scale: [1, 1.3, 1], opacity: [0.8, 0.4, 0.8] }}
-      transition={{ duration: 2, repeat: Infinity }}
-      className="absolute -bottom-1 -left-1 w-3 h-3 sm:w-4 sm:h-4 bg-accent rounded-full shadow-gold"
-    />
-  </motion.div>
-
-  {/* Company Name & Slogan */}
-  <div>
-    <h1 className="font-display font-bold text-sm sm:text-lg text-primary">
-      {t('nav.companyName')}
-    </h1>
-    <p className="text-[10px] sm:text-xs text-muted-foreground">
-      {t('nav.companySlogan')}
-    </p>
-  </div>
-</Link>
-
+            {/* Company Name & Slogan */}
+            <div>
+              <h1 className="font-display font-bold text-sm sm:text-lg text-primary">
+                {t('nav.companyName')}
+              </h1>
+              <p className="text-[10px] sm:text-xs text-muted-foreground">
+                {t('nav.companySlogan')}
+              </p>
+            </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-2">
@@ -111,7 +112,7 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-3">
             <LanguageSwitcher />
             <Button variant="default" size="lg" asChild className="group shadow-medium bg-primary hover:bg-primary/90">
-              <Link to="/contact">
+              <Link to="/book-consultation">
                 <Sparkles className="w-4 h-4 group-hover:animate-pulse" />
                 <span>{t('nav.startNow')}</span>
               </Link>
@@ -176,7 +177,7 @@ const Navbar = () => {
                 className="pt-4"
               >
                 <Button variant="default" className="w-full shadow-medium bg-primary hover:bg-primary/90" size="lg" asChild>
-                  <Link to="/contact">
+                  <Link to="/book-consultation">
                     <Sparkles className="w-4 h-4" />
                     {t('nav.startNow')}
                   </Link>

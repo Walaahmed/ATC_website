@@ -145,15 +145,14 @@ const Footer = () => {
         >
           {/* Company Info */}
           <motion.div variants={itemVariants} className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-3 mb-8 group">
-              <div className="w-14 h-14 rounded-2xl bg-primary-foreground flex items-center justify-center group-hover:shadow-gold transition-shadow duration-300">
-                <span className="text-primary font-bold text-xl">ATC</span>
+            {/* Logo Image */}
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white flex items-center justify-center shadow-medium group-hover:shadow-strong transition-shadow duration-500">
+                <img
+                  src="/logo.png" 
+                  alt="ATC Logo"
+                  className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-full"
+                />
               </div>
-              <div>
-                <h4 className="font-display font-bold text-xl">{t('footer.companyName')}</h4>
-                <p className="text-sm text-primary-foreground/70">{t('footer.companySlogan')}</p>
-              </div>
-            </Link>
             <p className="text-primary-foreground/70 leading-relaxed mb-8">
               {t('footer.companyDescription')}
             </p>

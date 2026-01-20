@@ -588,10 +588,13 @@ const enTranslations = {
     en: 'English',
   },
 };
-
+const setDocumentDirection = (lang: 'ar' | 'en') => { if (typeof document !== 'undefined') { document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'; document.documentElement.lang = lang; document.documentElement.style.direction = lang === 'ar' ? 'rtl' : 'ltr'; } };
 // Get saved language from localStorage or default to Arabic
 const savedLanguage = typeof window !== 'undefined' ? localStorage.getItem('language') : 'ar';
+const initialLang = savedLanguage === 'en' ? 'en' : 'ar';
 
+// Set initial document direction
+setDocumentDirection(initialLang as 'ar' | 'en');
 i18n
   .use(initReactI18next)
   .init({
@@ -612,6 +615,7 @@ export const changeLanguage = (lang: 'ar' | 'en') => {
   localStorage.setItem('language', lang);
   
   // Update document direction
+  setDocumentDirection(lang);
   if (typeof document !== 'undefined') {
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
