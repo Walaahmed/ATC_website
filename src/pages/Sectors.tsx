@@ -223,7 +223,7 @@ const Sectors = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-white via-blue-50/40 to-white">
+      {/* <section className="py-20 bg-gradient-to-br from-white via-blue-50/40 to-white">
   <div className="container-custom">
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -280,7 +280,7 @@ const Sectors = () => {
       </div>
     </motion.div>
   </div>
-</section>
+</section> */}
     </Layout>
   );
 };
