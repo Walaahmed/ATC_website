@@ -128,6 +128,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import ConsultingService from "./pages/ConsultingService";
 import DigitalTransformation from "./pages/DigitalTransformation";
+import TrainingService from "./pages/TrainingService";
 import ServiceDetail from "./pages/ServiceDetail";
 import Sectors from "./pages/Sectors";
 import Contact from "./pages/Contact";
@@ -150,6 +151,8 @@ const App = () => (
           
           <Route path="/services/consulting" element={<ConsultingService />} />
           <Route path="/services/digital-transformation" element={<DigitalTransformation />} />
+          <Route path="/services/training" element={<TrainingService />} />
+
           <Route path="/services/training" element={<ServiceDetail />} /> {/* هذا للتدريب */}
           
           <Route path="/service/:slug" element={<ServiceDetail />} />

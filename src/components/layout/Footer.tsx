@@ -12,7 +12,6 @@ const Footer = () => {
     { name: t('footer.home'), path: '/' },
     { name: t('footer.about'), path: '/about' },
     { name: t('footer.services'), path: '/services' },
-    { name: t('footer.blog'), path: '/blog' },
     { name: t('footer.contact'), path: '/contact' },
   ];
 
