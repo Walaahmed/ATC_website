@@ -48,39 +48,62 @@ const Navbar = () => {
       <div className="container-custom">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="relative"
-            >
-              {/* Logo Image */}
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white flex items-center justify-center shadow-medium group-hover:shadow-strong transition-shadow duration-500">
-                <img
-                  src="/logo.png" 
-                  alt="ATC Logo"
-                  className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-full"
-                />
-              </div>
+         <Link to="/" className="flex items-center gap-3 sm:gap-4 group">
+  <motion.div 
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className="relative"
+  >
+    <img
+      src="/logo-transparent.png" 
+      alt="ATC Logo"
+      className="
+        w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24
+        
+        object-contain
+        rounded-none 
+        
+        bg-transparent
+        shadow-none
+        border-none
+        
+        transition-all duration-300
+        group-hover:brightness-110
+        group-hover:scale-105
+      "
+      style={{
+        border: 'none',
+        outline: 'none',
+        boxShadow: 'none',
+        backgroundColor: 'transparent',
+      }}
+    />
+  </motion.div>
 
-              {/* Animated Accent Dot */}
-              <motion.div
-                animate={{ scale: [1, 1.3, 1], opacity: [0.8, 0.4, 0.8] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="absolute -bottom-1 -left-1 w-3 h-3 sm:w-4 sm:h-4 bg-accent rounded-full shadow-gold"
-              />
-            </motion.div>
-
-            {/* Company Name & Slogan */}
-            <div>
-              <h1 className="font-display font-bold text-sm sm:text-lg text-primary">
-                {t('nav.companyName')}
-              </h1>
-              <p className="text-[10px] sm:text-xs text-muted-foreground">
-                {t('nav.companySlogan')}
-              </p>
-            </div>
-          </Link>
+  {/* Company Name & Slogan - تكبير النص برضه */}
+  <div className={isRTL ? 'text-right' : 'text-left'}>
+    <motion.h1 
+      whileHover={{ scale: 1.02 }}
+      className="
+        font-display font-bold 
+        text-lg sm:text-xl md:text-2xl lg:text-3xl 
+        text-gray-900
+        leading-tight
+        tracking-tight
+      "
+    >
+      {t('nav.companyName')}
+    </motion.h1>
+    <p className="
+      text-sm sm:text-base md:text-lg  
+      text-gray-600 font-medium
+      mt-1
+      opacity-90
+    ">
+      {t('nav.companySlogan')}
+    </p>
+  </div>
+</Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-2">

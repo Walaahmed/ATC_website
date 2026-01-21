@@ -366,61 +366,53 @@ const TrainingService = () => {
         </div>
       </section>
 
-      {/* CTA Section - متطابق مع DigitalTransformation */}
-  <section className="py-12 bg-gradient-to-br from-white via-blue-50/30 to-white">
+    {/* CTA Section - متطابق مع DigitalTransformation */}
+  <section className="py-20 bg-gradient-to-br from-white via-blue-50/40 to-white">
   <div className="container-custom">
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-strong p-8 md:p-10 text-center"
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className="relative overflow-hidden rounded-3xl bg-white shadow-strong p-10 md:p-16 text-center"
     >
-      <div className="absolute -top-16 -left-16 w-48 h-48 bg-white/5 rounded-full blur-2xl" />
-      <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-purple-300/10 rounded-full blur-2xl" />
+      <div className="absolute -top-24 -left-24 w-64 h-64 bg-[#d6ad55]/15 rounded-full blur-3xl" />
+      <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" />
 
-      <div className="relative z-10 max-w-xl mx-auto text-white">
-        <div className="w-16 h-16 rounded-xl bg-white/20 flex items-center justify-center mx-auto mb-5 backdrop-blur-sm">
-          <GraduationCap className="w-8 h-8 text-white" />
-        </div>
-        
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+      <div className="relative z-10 max-w-2xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
           {isRTL ? 'جاهز لتطوير مهاراتك؟' : 'Ready to Develop Your Skills?'}
         </h2>
 
-        <p className="text-base md:text-lg text-blue-100 mb-8 leading-relaxed">
+        <p className="text-lg text-gray-600 mb-10 leading-relaxed">
           {isRTL 
             ? 'تواصل معنا لمعرفة المزيد عن برامجنا التدريبية وتصميم برنامج يناسب احتياجاتك التنظيمية'
             : 'Contact us to learn more about our training programs and design a program that suits your organizational needs'
           }
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Button
-            size="lg"
-            asChild
-            className="
-              bg-white text-blue-600 font-semibold
-              px-8 py-5 rounded-xl
-              shadow-[0_8px_20px_rgba(255,255,255,0.3)]
-              hover:bg-blue-50 hover:scale-[1.02]
-              transition-all duration-300
-              min-w-[200px]
-            "
+        <Button
+          size="xl"
+          asChild
+          className="
+            bg-gradient-to-b from-[#d6ad55] to-[#b6892e]
+            text-white font-semibold
+            px-10 py-6 rounded-xl
+            shadow-[0_10px_30px_rgba(182,137,46,0.35)]
+            hover:brightness-110 hover:scale-[1.03]
+            transition-all duration-300
+          "
+        >
+          <Link
+            to="/contact"
+            className="group inline-flex items-center gap-2"
           >
-            <Link
-              to="/contact"
-              className="group inline-flex items-center justify-center gap-2"
-            >
-              {isRTL ? 'تواصل للحصول على عرض تدريبي' : 'Contact for Training Proposal'}
-              <ArrowIcon
-                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-              />
-            </Link>
-          </Button>
-          
-        
-        </div>
+            {isRTL ? 'تواصل للحصول على عرض تدريبي' : 'Contact for Training Proposal'}
+            <ArrowIcon
+              className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </Link>
+        </Button>
       </div>
     </motion.div>
   </div>

@@ -95,44 +95,7 @@ const Footer = () => {
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary-foreground/5 rounded-full blur-[120px]" />
       </div>
 
-      {/* Newsletter Section */}
-      {/* <div className="border-b border-primary-foreground/10 relative">
-        <div className="container-custom py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl mx-auto text-center"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/15 text-accent mb-6">
-              <Sparkles className="w-4 h-4" />
-              <span className="text-sm font-medium">{t('footer.stayUpdated')}</span>
-            </div>
-            <h3 className="text-3xl font-display font-bold mb-4">{t('footer.stayConnected')}</h3>
-            <p className="text-primary-foreground/70 mb-8 text-lg">
-              {t('footer.newsletterDesc')}
-            </p>
-            <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-              <input
-                type="email"
-                placeholder={t('footer.emailPlaceholder')}
-                className="flex-1 px-6 py-4 rounded-2xl bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none focus:border-accent focus:bg-primary-foreground/15 transition-all duration-300"
-              />
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                className="px-8 py-4 rounded-2xl bg-gradient-gold text-accent-foreground font-semibold hover:shadow-gold transition-all duration-300 flex items-center justify-center gap-2"
-              >
-                <span>{t('footer.subscribe')}</span>
-                <Send className="w-4 h-4" />
-              </motion.button>
-            </form>
-          </motion.div>
-        </div>
-      </div> */}
-
+    
       {/* Main Footer */}
       <div className="container-custom py-20 relative">
         <motion.div
@@ -143,37 +106,56 @@ const Footer = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12"
         >
           {/* Company Info */}
-          <motion.div variants={itemVariants} className="lg:col-span-1">
-            {/* Logo Image */}
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white flex items-center justify-center shadow-medium group-hover:shadow-strong transition-shadow duration-500">
-                <img
-                  src="/logo.png" 
-                  alt="ATC Logo"
-                  className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-full"
-                />
-              </div>
-            <p className="text-primary-foreground/70 leading-relaxed mb-8">
-              {t('footer.companyDescription')}
-            </p>
-            
-            {/* Social Links
-            <div className="flex items-center gap-3 flex-wrap">
-              {socialLinks.map((social) => (
-                <motion.a
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-11 h-11 rounded-xl bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-all duration-300"
-                  aria-label={social.name}
-                >
-                  {social.icon}
-                </motion.a>
-              ))}
-            </div> */}
-          </motion.div>
+        <motion.div variants={itemVariants} className="lg:col-span-1">
+  {/* Logo مع كلمة Consulting */}
+  <div className="flex items-center gap-3 mb-6">
+    {/* اللوجو بدون خلفية - نفس تصميم النافبار */}
+    <img
+      src="/logo-transparent.png" 
+      alt="ATC Logo"
+      className="
+        w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18
+        object-contain
+        /* إزالة أي تأثيرات */
+        rounded-none
+        bg-transparent
+        shadow-none
+        border-none
+      "
+      style={{
+        border: 'none',
+        outline: 'none',
+        boxShadow: 'none',
+        backgroundColor: 'transparent',
+      }}
+    />
+    
+    <div className={isRTL ? 'text-right' : 'text-left'}>
+      <h3 className="
+        font-display font-bold 
+        text-xl sm:text-2xl md:text-3xl
+        text-white
+        leading-tight
+      ">
+        {isRTL ? 'الاستشارات' : 'Consulting'}
+      </h3>
+      <p className="
+        text-sm sm:text-base
+        text-white/80
+        font-medium
+        mt-0.5
+      ">
+      </p>
+    </div>
+  </div>
+
+  {/* وصف الشركة */}
+  <p className="text-white/70 leading-relaxed mb-8 text-sm sm:text-base">
+    {t('footer.companyDescription')}
+  </p>
+  
+  {/* Social Links (مش محتاجها دلوقتي) */}
+</motion.div>
 
           {/* Quick Links */}
           <motion.div variants={itemVariants}>
@@ -236,7 +218,7 @@ const Footer = () => {
                   <Phone className="w-5 h-5 text-accent" />
                 </div>
                 <a href="tel:+971566613952" className="text-primary-foreground/70 hover:text-accent transition-colors" dir="ltr">
-                  +971 56 661 3952
+                  +971 50 426 7486
                 </a>
               </li>
               <li className="flex items-center gap-4">

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
-import heroMeeting from '@/assets/hero-meeting.jpg';
+import heroMeeting from '@/assets/hero.jpg';
 
 const HeroSection = () => {
   const { t, i18n } = useTranslation();

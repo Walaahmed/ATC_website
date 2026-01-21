@@ -103,14 +103,28 @@ const DigitalTransformation = () => {
               transition={{ duration: 0.6 }}
               className={isRTL ? '' : 'order-1'}
             >
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6"
-              >
-                {isRTL ? 'التحول الرقمي والاستشارات التقنية المتقدمة' : 'Digital Transformation & Advanced Technical Consulting'}
-              </motion.h1>
+       <motion.h1 
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.3, duration: 0.6 }}
+  className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6 leading-relaxed"
+>
+  {isRTL ? (
+    <>
+      التحول الرقمي
+      <br />
+            <br />
+
+      والاستشارات التقنية المتقدمة
+    </>
+  ) : (
+    <>
+      Digital Transformation
+      <br />
+      & Advanced Technical Consulting
+    </>
+  )}
+</motion.h1>
               
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -129,12 +143,12 @@ const DigitalTransformation = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
               >
-                <Button size="lg" asChild className="group shadow-[0_8px_25px_rgba(0,0,0,0.3)] bg-gradient-to-b from-[#d6ad55] to-[#b6892e] text-white font-medium hover:brightness-110 transition-all duration-300">
+                {/* <Button size="lg" asChild className="group shadow-[0_8px_25px_rgba(0,0,0,0.3)] bg-gradient-to-b from-[#d6ad55] to-[#b6892e] text-white font-medium hover:brightness-110 transition-all duration-300">
                   <Link to="/contact" className="flex items-center gap-2">
                     <span>{isRTL ? '👉 تحدث مع مستشار التحول الرقمي' : '👉 Talk to a Digital Transformation Consultant'}</span>
                     <ArrowIcon className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
-                </Button>
+                </Button> */}
               </motion.div>
             </motion.div>
 
@@ -315,19 +329,17 @@ const DigitalTransformation = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-strong p-10 md:p-16 text-center"
+            className="relative overflow-hidden rounded-3xl bg-white shadow-strong p-10 md:p-16 text-center"
           >
-            <div className="absolute -top-24 -left-24 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-            <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl" />
+            <div className="absolute -top-24 -left-24 w-64 h-64 bg-[#d6ad55]/15 rounded-full blur-3xl" />
+            <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" />
 
-            <div className="relative z-10 max-w-2xl mx-auto text-white">
-              <Cpu className="w-16 h-16 mx-auto mb-6 text-white" />
-              
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <div className="relative z-10 max-w-2xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 {isRTL ? 'جاهز للتحول الرقمي؟' : 'Ready for Digital Transformation?'}
               </h2>
 
-              <p className="text-lg text-blue-100 mb-10 leading-relaxed">
+              <p className="text-lg text-gray-600 mb-10 leading-relaxed">
                 {isRTL 
                   ? 'تواصل مع خبرائنا لبدء رحلة التحول الرقمي لمؤسستك'
                   : 'Contact our experts to start your organization\'s digital transformation journey'
@@ -338,10 +350,11 @@ const DigitalTransformation = () => {
                 size="xl"
                 asChild
                 className="
-                  bg-white text-blue-600 font-semibold
+                  bg-gradient-to-b from-[#d6ad55] to-[#b6892e]
+                  text-white font-semibold
                   px-10 py-6 rounded-xl
-                  shadow-[0_10px_30px_rgba(255,255,255,0.3)]
-                  hover:bg-blue-50 hover:scale-[1.03]
+                  shadow-[0_10px_30px_rgba(182,137,46,0.35)]
+                  hover:brightness-110 hover:scale-[1.03]
                   transition-all duration-300
                 "
               >
@@ -349,7 +362,7 @@ const DigitalTransformation = () => {
                   to="/contact"
                   className="group inline-flex items-center gap-2"
                 >
-                  {isRTL ? '👉 تحدث مع خبير التحول الرقمي' : '👉 Talk to a Digital Transformation Expert'}
+                  {isRTL ? ' تحدث مع خبير التحول الرقمي' : ' Talk to a Digital Transformation Expert'}
                   <ArrowIcon
                     className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
                   />

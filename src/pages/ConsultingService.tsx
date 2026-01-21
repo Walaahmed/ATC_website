@@ -116,14 +116,21 @@ const ConsultingService = () => {
               transition={{ duration: 0.6 }}
               className={isRTL ? '' : 'order-1'}
             >
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6"
-              >
-                {isRTL ? 'الاستشارات المؤسسية والاستراتيجية' : 'Institutional & Strategic Consulting'}
-              </motion.h1>
+             <motion.h1 
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.3, duration: 0.6 }}
+  className="
+    text-2xl sm:text-3xl md:text-4xl lg:text-5xl  /* أصغر */
+    font-bold 
+    text-gray-900  /* تغيير اللون للوضوح */
+    mb-6
+    leading-tight  /* تقليل المسافة بين الأسطر */
+    tracking-tight  /* تقليل المسافة بين الحروف */
+  "
+>
+  {isRTL ? 'الاستشارات المؤسسية والاستراتيجية' : 'Institutional & Strategic Consulting'}
+</motion.h1>
               
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -145,7 +152,7 @@ const ConsultingService = () => {
               >
                 <Button size="lg" asChild className="group shadow-[0_8px_25px_rgba(0,0,0,0.3)] bg-gradient-to-b from-[#d6ad55] to-[#b6892e] text-white font-medium hover:brightness-110 transition-all duration-300">
                   <Link to="/book-consultation" className="flex items-center gap-2">
-                    <span>{isRTL ? 'احجز استشارة' : 'Book Consultation'}</span>
+                    <span>{isRTL ? 'طلب استشارة' : 'Request Consultation'}</span>
                     <ArrowIcon className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
                 </Button>
@@ -285,51 +292,89 @@ const ConsultingService = () => {
       </section>
 
       {/* Approach Section */}
-      <section className="py-20 bg-white">
-        <div className="container-custom">
+      <section className="py-20 bg-gradient-to-br from-white via-blue-50/20 to-white">
+  <div className="container-custom">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+        {isRTL ? 'منهجيتنا في العمل' : 'Our Work Methodology'}
+      </h2>
+    </motion.div>
+
+    <div className="relative">
+      {/* Timeline line */}
+      <div className="
+        absolute left-1/2 top-0 bottom-0 w-1 
+        bg-gradient-to-b from-blue-500 via-purple-500 to-blue-500 
+        hidden md:block
+        transform -translate-x-1/2
+        rounded-full
+      " />
+
+      <div className="grid md:grid-cols-2 gap-8 md:gap-12 relative">
+        {approachSteps.map((step, index) => (
           <motion.div
+            key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            transition={{ delay: index * 0.1 }}
+            className={
+              isRTL
+                ? `relative ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12 md:col-start-2'}`
+                : `relative ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12 md:col-start-2'}`
+            }
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-              {isRTL ? 'منهجيتنا في العمل' : 'Our Work Methodology'}
-            </h2>
-          </motion.div>
+            {/* Card */}
+            <div className="
+              group
+              bg-white
+              rounded-3xl
+              p-8
+              shadow-soft
+              hover:shadow-strong
+              border border-gray-200
+              hover:border-blue-200
+              transition-all duration-300
+              hover:-translate-y-2
+              h-full
+            ">
+<div className="flex items-center gap-6 mb-6">
+  <div className="
+    text-6xl md:text-7xl
+    font-bold
+    text-blue-600/30
+    flex-shrink-0
+    leading-none
+  ">
+    {step.number.replace('️⃣', '')}
+  </div>
 
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/30 via-primary/50 to-primary/30 hidden md:block" />
-            
-            <div className="grid md:grid-cols-2 gap-8 relative">
-              {approachSteps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`relative ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12 md:col-start-2'}`}
-                >
-                  {/* Timeline dot */}
-                  <div className="absolute hidden md:block left-1/2 top-6 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-white shadow-medium" />
-                  
-                  <div className="bg-gradient-to-br from-white to-blue-50/30 rounded-2xl p-8 shadow-soft border border-border/50">
-                    <div className="text-3xl mb-4">{step.number}</div>
-                    <h3 className="text-xl font-bold text-primary mb-3">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
+  <h3 className="text-xl md:text-2xl font-bold text-gray-900">
+    {step.title}
+  </h3>
+</div>
+
+              {/* الوصف فقط */}
+              <p className="
+                text-gray-600
+                leading-relaxed
+                text-base md:text-lg
+                mt-4
+              ">
+                {step.description}
+              </p>
             </div>
-          </div>
-        </div>
-      </section>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-white via-blue-50/40 to-white">
@@ -372,7 +417,7 @@ const ConsultingService = () => {
                   to="/book-consultation"
                   className="group inline-flex items-center gap-2"
                 >
-                  {isRTL ? 'احجز استشارة' : 'Book Consultation'}
+                  {isRTL ? 'طلب استشارة' : 'Request Consultation'}
                   <ArrowIcon
                     className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
                   />
