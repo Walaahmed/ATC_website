@@ -807,7 +807,7 @@ const Contact = () => {
 
     try {
       // استخدم FormSubmit لإرسال الإيميل
-      const response = await fetch('https://formsubmit.co/ajax/info@atc-ae.com', {
+      const response = await fetch('https://formsubmit.co/ajax/ac89cab9336b36569a10997c062f68e7', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
