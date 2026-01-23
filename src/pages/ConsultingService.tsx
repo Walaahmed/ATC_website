@@ -282,8 +282,7 @@ const ConsultingService = () => {
             className="text-center mt-12"
           >
             <Button size="lg" asChild className="group shadow-[0_8px_25px_rgba(0,0,0,0.3)] bg-gradient-to-b from-[#d6ad55] to-[#b6892e] text-white font-medium hover:brightness-110 transition-all duration-300">
-              <Link to="/book-consultation" className="flex items-center gap-2">
-                <span>{isRTL ? 'اطلب استشارة' : 'Request Consultation'}</span>
+<Link to="/book-consultation?source=consulting" className="flex items-center gap-2">                <span>{isRTL ? 'اطلب استشارة' : 'Request Consultation'}</span>
                 <ArrowIcon className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </Button>

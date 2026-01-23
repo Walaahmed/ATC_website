@@ -59,115 +59,116 @@ const Services = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-white via-blue-50/30 to-white relative overflow-hidden">
-        <div className="container-custom relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className={isRTL ? '' : 'order-1'}
-            >
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6"
-              >
-                {isRTL ? 'خدماتنا المتكاملة' : 'Our Integrated Services'}
-              </motion.h1>
-              
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="text-lg md:text-xl text-gray-600 leading-relaxed"
-              >
-                {isRTL 
-                  ? 'تقدّم ATC للاستشارات منظومة متكاملة من خدمات الاستشارات، والتحول الرقمي، والتدريب التنفيذي، المصمّمة لدعم الأداء المؤسسي وتحقيق نتائج مستدامة.'
-                  : 'ATC Consulting offers an integrated system of consulting, digital transformation, and executive training services designed to support institutional performance and achieve sustainable results.'
-                }
-              </motion.p>
-            </motion.div>
+    {/* Hero Section - تم التعديل */}
+<section className="pt-40 pb-16 bg-gradient-to-br from-white via-blue-50/30 to-white relative overflow-hidden"> {/* زدنا pt لتخلي الصورة تنزل تحت النافبار */}
+  <div className="container-custom relative z-10">
+    <div className="grid lg:grid-cols-2 gap-8 items-center">
+      {/* Content */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className={isRTL ? '' : 'order-1'}
+      >
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-4"
+        >
+          {isRTL ? 'خدماتنا المتكاملة' : 'Our Integrated Services'}
+        </motion.h1>
+        
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="text-lg md:text-xl text-gray-600 leading-normal"
+        >
+          {isRTL 
+            ? 'تقدّم ATC للاستشارات منظومة متكاملة من خدمات الاستشارات، والتحول الرقمي، والتدريب التنفيذي، المصمّمة لدعم الأداء المؤسسي وتحقيق نتائج مستدامة.'
+            : 'ATC Consulting offers an integrated system of consulting, digital transformation, and executive training services designed to support institutional performance and achieve sustainable results.'
+          }
+        </motion.p>
+      </motion.div>
 
-            {/* Image */}
-            <motion.div
-              initial={{ opacity: 0, x: isRTL ? -30 : 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className={`relative ${isRTL ? '' : 'order-2'}`}
-            >
-              <div className="relative rounded-3xl overflow-hidden shadow-strong">
-                <img 
-                  src={heroMeeting} 
-                  alt={isRTL ? 'خدمات ATC' : 'ATC Services'} 
-                  className="w-full h-80 lg:h-96 object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+      {/* Image */}
+      <motion.div
+        initial={{ opacity: 0, x: isRTL ? -30 : 30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className={`relative mt-8 ${isRTL ? '' : 'order-2'}`} 
+      >
+        <div className="relative rounded-3xl overflow-hidden shadow-strong">
+          <img 
+            src={heroMeeting} 
+            alt={isRTL ? 'خدمات ATC' : 'ATC Services'} 
+            className="w-full h-96 object-cover" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</section>
+
+{/* Services Grid - تم التعديل */}
+<section className="py-12 bg-gradient-to-br from-white via-blue-50/20 to-white"> {/* قللنا py لتقلل المسافة البيضاء */}
+  <div className="container-custom">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8"> {/* رجعنا gap لطبيعته */}
+      {services.map((service, index) => (
+        <motion.div
+          key={service.slug}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className="group"
+        >
+          <div className="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-medium transition-all duration-300 h-full flex flex-col border border-border/50 min-h-[420px]"> {/* زدنا min-height لتخلي الكارد أطول */}
+            {/* Title Header */}
+            <div className="bg-primary p-6 flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center">
+                <service.icon className="w-7 h-7 text-white" />
               </div>
-            </motion.div>
+              <h3 className="text-xl font-bold text-primary-foreground">
+                {service.title}
+              </h3>
+            </div>
+
+            {/* Card Content - جعلناها تطول لتملأ المساحة */}
+            <div className="flex flex-col flex-1 p-6 bg-gradient-to-br from-white to-blue-50/50">
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                {service.description}
+              </p>
+
+              {/* Features */}
+              <ul className="space-y-3 mb-8 flex-1">
+                {service.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                    <span className="text-gray-700 text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA Button - في الأسفل مباشرة */}
+              <div className="mt-auto">
+                <Link
+                  to={`/services/${service.slug}`}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl shadow-[0_8px_25px_rgba(0,0,0,0.3)] bg-gradient-to-b from-[#d6ad55] to-[#b6892e] text-white font-medium hover:brightness-110 transition-all duration-300 group w-full"
+                >
+                  <span>{service.cta}</span>
+                  <ArrowIcon className={`w-4 h-4 transition-transform ${isRTL ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Services Grid */}
-      <section className="section-padding bg-gradient-to-br from-white via-blue-50/20 to-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.slug}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group"
-              >
-                <div className="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-medium transition-all duration-300 h-full flex flex-col border border-border/50">
-                  {/* Title Header */}
-                  <div className="bg-primary p-6 flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center">
-                      <service.icon className="w-7 h-7 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold text-primary-foreground">
-                      {service.title}
-                    </h3>
-                  </div>
-
-                  {/* Card Content */}
-                  <div className="flex flex-col flex-1 p-6 bg-gradient-to-br from-white to-blue-50/50">
-                    <p className="text-gray-600 mb-6 leading-relaxed">
-                      {service.description}
-                    </p>
-
-                    {/* Features */}
-                    <ul className="space-y-3 mb-8 flex-1">
-                      {service.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-3">
-                          <CheckCircle className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                          <span className="text-gray-700 text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* CTA Button */}
-                    <Link
-                      to={`/services/${service.slug}`}
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl shadow-[0_8px_25px_rgba(0,0,0,0.3)] bg-gradient-to-b from-[#d6ad55] to-[#b6892e] text-white font-medium hover:brightness-110 transition-all duration-300 group"
-                    >
-                      <span>{service.cta}</span>
-                      <ArrowIcon className={`w-4 h-4 transition-transform ${isRTL ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
       {/* Why Choose Us Section */}
       <section className="py-20 bg-white">
         <div className="container-custom">

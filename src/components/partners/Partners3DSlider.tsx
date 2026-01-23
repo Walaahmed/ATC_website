@@ -160,13 +160,13 @@ const Partners3DSlider = () => {
       </div> */}
 
       {/* عدد الشركاء */}
-      <div className="mt-10 text-center">
+      {/* <div className="mt-10 text-center">
         <span className="text-muted-foreground">أكثر من </span>
         <span className="text-accent font-bold text-xl mx-1">
           {partnerLogos.length}
         </span>
         <span className="text-muted-foreground"> شريك نجاح</span>
-      </div>
+      </div> */}
     </div>
   );
 };

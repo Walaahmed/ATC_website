@@ -247,7 +247,7 @@ const DigitalTransformation = () => {
             className="text-center mt-12"
           >
             <Button size="lg" asChild className="group shadow-[0_8px_25px_rgba(0,0,0,0.3)] bg-gradient-to-b from-[#d6ad55] to-[#b6892e] text-white font-medium hover:brightness-110 transition-all duration-300">
-              <Link to="/book-consultation" className="flex items-center gap-2">
+                <Link to="/book-consultation?source=digital" className="flex items-center gap-2">
                 <span>{isRTL ? 'ابدأ رحلة التحول الرقمي' : 'Start Your Digital Transformation Journey'}</span>
                 <ArrowIcon className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
@@ -358,11 +358,8 @@ const DigitalTransformation = () => {
                   transition-all duration-300
                 "
               >
-                <Link
-                  to="/contact"
-                  className="group inline-flex items-center gap-2"
-                >
-                  {isRTL ? ' تحدث مع خبير التحول الرقمي' : ' Talk to a Digital Transformation Expert'}
+                <Link to="/book-consultation?source=digital" className="flex items-center gap-2">
+                  {isRTL ? ' طلب استشارة في التحول الرقمي' : ' Request Consultation in Digital Transformation Expert'}
                   <ArrowIcon
                     className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
                   />

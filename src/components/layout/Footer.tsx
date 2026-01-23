@@ -209,8 +209,8 @@ const Footer = () => {
                 </div>
                 <span className="text-primary-foreground/70">
                   {i18n.language === 'ar' 
-                    ? 'دبي - الممزر - بناء AB Plaza8 - مكتب رقم 202'
-                    : 'Dubai - Al Mamzar - AB Plaza8 Building - Office 202'}
+                    ? 'دبي - الخليج التجاري'
+                    : 'Dubai - Business Bay'}
                 </span>
               </li>
               <li className="flex items-center gap-4">

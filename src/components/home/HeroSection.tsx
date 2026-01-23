@@ -72,23 +72,23 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Main Heading */}
-            <motion.h1
-              variants={itemVariants}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight mb-6"
-            >
-              {t('hero.title1')}{' '}
-              <span className="relative inline-block">
-                <span className="text-accent">{t('hero.titleHighlight')}</span>
-                <motion.span
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
-                  className={`absolute -bottom-2 ${isRTL ? 'right-0 origin-right' : 'left-0 origin-left'} w-full h-1.5 bg-gradient-gold rounded-full`}
-                />
-              </span>
-              <br />
-              <span className="text-foreground/80">{t('hero.title2')}</span>
-            </motion.h1>
+          <motion.h1
+  variants={itemVariants}
+  className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-6"
+>
+  {t('hero.title1')}{' '}
+  <span className="relative inline-block">
+    <span className="text-accent">{t('hero.titleHighlight')}</span>
+    <motion.span
+      initial={{ scaleX: 0 }}
+      animate={{ scaleX: 1 }}
+      transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
+      className={`absolute -bottom-2 ${isRTL ? 'right-0 origin-right' : 'left-0 origin-left'} w-full h-1.5 bg-gradient-gold rounded-full`}
+    />
+  </span>
+  <br />
+  <span className="text-foreground/80">{t('hero.title2')}</span>
+</motion.h1>
 
             {/* Description */}
             <motion.p
@@ -124,49 +124,37 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Image Side */}
-          <motion.div
-            initial={{ opacity: 0, x: isRTL ? -50 : 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className={`order-1 ${isRTL ? 'lg:order-2' : 'lg:order-2'}`}
-          >
-            <div className="relative">
-              {/* Main Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-strong">
-                <img
-                  src={heroMeeting}
-                  alt="ATC Consulting - Professional Meeting"
-                  className="w-full h-[300px] md:h-[400px] lg:h-[480px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
-              </div>
-              
-              {/* Decorative Elements */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                className={`absolute -top-6 ${isRTL ? '-right-6' : '-left-6'} w-24 h-24 border-2 border-accent/30 rounded-full hidden lg:block`}
-              />
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-                className={`absolute -bottom-4 ${isRTL ? '-left-4' : '-right-4'} w-16 h-16 border-2 border-primary/20 rounded-full hidden lg:block`}
-              />
-              
-              {/* Stats Badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-                className={`absolute -bottom-6 ${isRTL ? '-right-6' : '-left-6'} bg-white rounded-xl shadow-strong p-4 hidden md:block border border-border`}
-              >
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">25+</div>
-                  <div className="text-sm text-muted-foreground">{t('hero.yearsExperience')}</div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
+       <motion.div
+  initial={{ opacity: 0, x: isRTL ? -50 : 50 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8, delay: 0.3 }}
+  className={`order-1 ${isRTL ? 'lg:order-2' : 'lg:order-2'}`}
+>
+  <div className="relative">
+    {/* Main Image */}
+    <div className="relative rounded-2xl overflow-hidden shadow-strong">
+      <img
+        src={heroMeeting}
+        alt="ATC Consulting - Professional Meeting"
+        className="w-full h-[300px] md:h-[400px] lg:h-[480px] object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
+    </div>
+    
+    {/* Stats Badge فقط - إحذف الدوائر التانية */}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 0.8, duration: 0.5 }}
+      className={`absolute -bottom-6 ${isRTL ? '-right-6' : '-left-6'} bg-white rounded-xl shadow-strong p-4 hidden md:block border border-border`}
+    >
+      <div className="text-center">
+        <div className="text-2xl font-bold text-primary">25+</div>
+        <div className="text-sm text-muted-foreground">{t('hero.yearsExperience')}</div>
+      </div>
+    </motion.div>
+  </div>
+</motion.div>
         </div>
       </div>
     </section>

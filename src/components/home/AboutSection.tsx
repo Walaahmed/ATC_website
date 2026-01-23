@@ -26,42 +26,39 @@ const AboutSection = () => {
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image Side */}
-          <motion.div
-            initial={{ opacity: 0, x: isRTL ? -50 : 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
-            <div className="relative">
-              {/* Main Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-strong">
-                <img
-                  src={aboutTeam}
-                  alt="ATC Consulting Team"
-                  className="w-full h-[350px] md:h-[450px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
-              </div>
-              
-              {/* Decorative Frame */}
-              <div className={`absolute -top-4 ${isRTL ? '-right-4' : '-left-4'} w-full h-full border-2 border-accent/30 rounded-2xl -z-10 hidden lg:block`} />
-              
-              {/* Experience Badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                className={`absolute -bottom-8 ${isRTL ? '-left-8' : '-right-8'} bg-primary rounded-xl shadow-strong p-5 hidden md:block`}
-              >
-                <div className="text-center text-primary-foreground">
-                  <div className="text-3xl font-bold">25+</div>
-                  <div className="text-sm opacity-80">{t('about.yearsExcellence')}</div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
+         <motion.div
+  initial={{ opacity: 0, x: isRTL ? -50 : 50 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.8 }}
+  className="relative"
+>
+  <div className="relative">
+    {/* Main Image */}
+    <div className="relative rounded-2xl overflow-hidden shadow-strong">
+      <img
+        src={aboutTeam}
+        alt="ATC Consulting Team"
+        className="w-full h-[350px] md:h-[450px] object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
+    </div>
+    
+    {/* Experience Badge فقط - إحذف الإطار الأصفر */}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.5, duration: 0.5 }}
+      className={`absolute -bottom-8 ${isRTL ? '-left-8' : '-right-8'} bg-primary rounded-xl shadow-strong p-5 hidden md:block`}
+    >
+      <div className="text-center text-primary-foreground">
+        <div className="text-3xl font-bold">25+</div>
+        <div className="text-sm opacity-80">{t('about.yearsExcellence')}</div>
+      </div>
+    </motion.div>
+  </div>
+</motion.div>
 
           {/* Content Side */}
           <motion.div

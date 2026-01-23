@@ -403,10 +403,7 @@ const TrainingService = () => {
             transition-all duration-300
           "
         >
-          <Link
-            to="/contact"
-            className="group inline-flex items-center gap-2"
-          >
+          <Link to="/book-consultation?source=training" className="flex items-center gap-2">
             {isRTL ? 'تواصل للحصول على عرض تدريبي' : 'Contact for Training Proposal'}
             <ArrowIcon
               className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
