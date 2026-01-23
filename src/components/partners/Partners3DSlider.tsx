@@ -143,30 +143,6 @@ const Partners3DSlider = () => {
           </AnimatePresence>
         </div>
       </div>
-
-      {/* النقاط */}
-      {/* <div className="flex justify-center mt-8 gap-3">
-        {Array.from({ length: groupCount }).map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentIndex(i * groupSize)}
-            className={`h-3 rounded-full transition-all ${
-              currentGroup === i
-                ? "w-10 bg-gradient-to-r from-accent to-primary"
-                : "w-3 bg-gray-300"
-            }`}
-          />
-        ))}
-      </div> */}
-
-      {/* عدد الشركاء */}
-      {/* <div className="mt-10 text-center">
-        <span className="text-muted-foreground">أكثر من </span>
-        <span className="text-accent font-bold text-xl mx-1">
-          {partnerLogos.length}
-        </span>
-        <span className="text-muted-foreground"> شريك نجاح</span>
-      </div> */}
     </div>
   );
 };
