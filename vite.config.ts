@@ -11,7 +11,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  base: '/', // مهم لل deployment
+  base: '/', 
   build: {
     outDir: 'dist',
     sourcemap: false,
