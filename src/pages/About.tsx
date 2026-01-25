@@ -3,7 +3,7 @@ import { useRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Layout from '@/components/layout/Layout';
 import Partners3DSlider from '@/components/partners/Partners3DSlider';
-import { Users, BookOpen, Award, Star } from 'lucide-react';
+import { Users, BookOpen, Award, Star, MessageCircle } from 'lucide-react';
 import heroMeeting from '@/assets/about-team.jpg';
 
 // Counter animation component
@@ -179,7 +179,6 @@ const About = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
     </div>
     
-    {/* Stats Badge فقط - إحذف الدوائر */}
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -269,6 +268,23 @@ const About = () => {
 
       {/* Partners Section */}
       <section className="section-padding bg-gradient-subtle relative overflow-hidden">
+         {/* WhatsApp Floating Icon */}
+             <motion.a
+               href={`https://wa.me/971504267486?text=${encodeURIComponent(
+                 isRTL 
+                   ? 'السلام عليكم، أود الاستفسار عن خدماتكم '
+                   : 'Hello, I would like to inquire about  services'
+               )}`}
+               target="_blank"
+               rel="noopener noreferrer"
+               initial={{ opacity: 0, scale: 0 }}
+               animate={{ opacity: 1, scale: 1 }}
+               transition={{ delay: 0.5, duration: 0.3 }}
+               className="fixed bottom-6 left-6 z-50 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
+             >
+               <MessageCircle className="w-6 h-6 text-white" />
+               <span className="sr-only">{isRTL ? 'تواصل عبر واتساب' : 'Contact via WhatsApp'}</span>
+             </motion.a>
         {/* Background decorations */}
         <motion.div
           animate={{ rotate: 360 }}
@@ -308,9 +324,9 @@ const About = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
               {t('aboutPage.partnersTitle')} <span className="text-gradient-gold">{t('aboutPage.partnersTitleHighlight')}</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+            {/* <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
               {t('aboutPage.partnersDescription')}
-            </p>
+            </p> */}
           </motion.div>
 
           <Partners3DSlider />

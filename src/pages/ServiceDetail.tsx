@@ -316,7 +316,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, ArrowRight, CheckCircle, Briefcase, Monitor, GraduationCap, Cpu, Sparkles, Building2, Users } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckCircle, Briefcase, Monitor, GraduationCap, Cpu, Sparkles, Building2, Users, MessageCircle } from 'lucide-react';
 import heroMeeting from '@/assets/hero-meeting.jpg';
 
 const getFeatureIcon = (title: string) => {
@@ -554,7 +554,23 @@ const ServiceDetail = () => {
                 </Button>
               </motion.div>
             </motion.div>
-
+  {/* WhatsApp Floating Icon */}
+      <motion.a
+        href={`https://wa.me/971504267486?text=${encodeURIComponent(
+          isRTL 
+            ? 'السلام عليكم، أود الاستفسار عن خدماتكم '
+            : 'Hello, I would like to inquire about  services'
+        )}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.5, duration: 0.3 }}
+        className="fixed bottom-6 left-6 z-50 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
+      >
+        <MessageCircle className="w-6 h-6 text-white" />
+        <span className="sr-only">{isRTL ? 'تواصل عبر واتساب' : 'Contact via WhatsApp'}</span>
+      </motion.a>
             {/* Image */}
             <motion.div
               initial={{ opacity: 0, x: isRTL ? -30 : 30 }}

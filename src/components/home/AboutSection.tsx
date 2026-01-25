@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { CheckCircle, Users, Award, Star, Target } from 'lucide-react';
+import { CheckCircle, Users, Award, Star, Target, MessageCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import aboutTeam from '@/assets/about-team.jpg';
 
@@ -102,7 +102,23 @@ const AboutSection = () => {
                 </motion.div>
               ))}
             </div>
-
+  {/* WhatsApp Floating Icon */}
+      <motion.a
+        href={`https://wa.me/971504267486?text=${encodeURIComponent(
+          isRTL 
+            ? 'السلام عليكم، أود الاستفسار عن خدماتكم '
+            : 'Hello, I would like to inquire about  services'
+        )}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.5, duration: 0.3 }}
+        className="fixed bottom-6 left-6 z-50 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
+      >
+        <MessageCircle className="w-6 h-6 text-white" />
+        <span className="sr-only">{isRTL ? 'تواصل عبر واتساب' : 'Contact via WhatsApp'}</span>
+      </motion.a>
             {/* Stats Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {stats.map((stat, index) => (
