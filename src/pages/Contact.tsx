@@ -782,7 +782,6 @@ const Contact = () => {
     const value = e.target.value.replace(/\D/g, ''); // إزالة كل ما ليس رقم
     setFormData(prev => ({ ...prev, phone: value }));
     
-    // إزالة الخطأ عند البدء في الكتابة
     if (errors.phone) {
       setErrors(prev => ({ ...prev, phone: '' }));
     }
@@ -877,10 +876,10 @@ const Contact = () => {
               {isRTL ? 'تم استلام طلبك بنجاح.' : 'Your request has been received successfully.'}
             </p>
             <p className="text-muted-foreground mb-8">
-              {isRTL 
-                ? 'سيتواصل معك فريقنا ATC خلال 24-48 ساعة لتأكيد الموعد.'
-                : 'The ATC team will contact you within 24-48 hours to confirm the appointment.'
-              }
+               {isRTL 
+                  ? 'سيتواصل معك فريقنا الاستشاري  خلال 24-48 ساعة لتأكيد الموعد.'
+                  : 'The consulting team will contact you within 24-48 hours to confirm the appointment.'
+                }
             </p>
             <Button size="lg" asChild className="group shadow-[0_8px_25px_rgba(0,0,0,0.3)] bg-gradient-to-b from-[#d6ad55] to-[#b6892e] text-white font-medium hover:brightness-110 transition-all duration-300">
               <Link to="/">
@@ -1219,7 +1218,7 @@ Our team will contact you within 24–48 hours.`
                   </h3>
                   <p className="text-sm text-gray-600 mb-4">
                     {isRTL 
-                      ? 'دبي مارينا، الخليج التجاري - الإمارات العربية المتحدة'
+                      ? 'دبي  الخليج التجاري - الإمارات العربية المتحدة'
                       : 'Dubai Marina, Business Bay - United Arab Emirates'
                     }
                   </p>

@@ -110,26 +110,30 @@ const Footer = () => {
   {/* Logo مع كلمة Consulting */}
   <div className="flex items-center gap-3 mb-6">
     {/* اللوجو بدون خلفية - نفس تصميم النافبار */}
-    <img
-      src="/logo-transparent.png" 
-      alt="ATC Logo"
-      className="
-        w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18
-        object-contain
-        /* إزالة أي تأثيرات */
-        rounded-none
-        bg-transparent
-        shadow-none
-        border-none
-      "
-      style={{
-        border: 'none',
-        outline: 'none',
-        boxShadow: 'none',
-        backgroundColor: 'transparent',
-      }}
-    />
-    
+ <img
+  src="/atc-logo.png"
+  alt="ATC Logo"
+  className="
+    w-14 h-14
+    sm:w-16 sm:h-16
+    md:w-18 md:h-18
+    lg:w-20 lg:h-20
+    object-cover
+    rounded-full
+    bg-white
+    p-1
+    shadow-sm
+    border border-white/20
+    transition-all duration-300
+    group-hover:brightness-110
+    group-hover:scale-105
+  "
+  style={{
+    border: 'none',
+    outline: 'none',
+    backgroundColor: 'transparent',
+  }}
+/>
     <div className={isRTL ? 'text-right' : 'text-left'}>
       <h3 className="
         font-display font-bold 
