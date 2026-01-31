@@ -107,9 +107,8 @@ const Footer = () => {
         >
           {/* Company Info */}
         <motion.div variants={itemVariants} className="lg:col-span-1">
-  {/* Logo مع كلمة Consulting */}
   <div className="flex items-center gap-3 mb-6">
-    {/* اللوجو بدون خلفية - نفس تصميم النافبار */}
+    
  <img
   src="/atc-logo.png"
   alt="ATC Logo"
